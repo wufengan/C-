@@ -26,8 +26,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pDirector->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    //CCScene *pScene = GameScene::create();
-	CCScene *pScene =GameMenuLayer::scene();
+    CCScene *pScene = GameScene::create();
+
     // run
     pDirector->runWithScene(pScene);
 
