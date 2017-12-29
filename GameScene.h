@@ -3,6 +3,13 @@
 #include "BackgroundLayer.h"
 #include "FishLayer.h"
 #include "MenuLayer.h"
+#include "CannonLayer.h"
+#include "TouchLayer.h"
+#include "Fish.h"
+#include "PanelLayer.h"
+#include "FishJoyData.h"
+#include "GoldCounterLayer.h"
+#include "PersonalAudioEngine.h"
 USING_NS_CC;
 
 class GameScene :
@@ -13,10 +20,25 @@ public:
 	CREATE_FUNC(GameScene)
 	virtual bool init();
 	virtual ~GameScene();
+	void cannonAimAt(CCPoint target);
+	void cannonShootTo(CCPoint target);
+	void alterGold(int delta);
+	void onEnter();
 protected:
-	BackgroundLayer* _backgroundLayer;
-	FishLayer* _fishLayer;
-	MenuLayer* _menuLayer;
+	BackgroundLayer* backgroundLayer;
+	FishLayer* fishLayer;
+	MenuLayer* menuLayer;
+	CannonLayer* cannonLayer;
+	TouchLayer* touchLayer;
+	PanelLayer* paneLayer;
+
+	//GoldCounterLayer* alterGold;
+
 	void preloadResources(void);
+	bool checkOutCollisionBetweenFishesAndBullet(Bullet* bullet);
+	void checkOutCollision();
+	virtual void update(float delta);
+	void fishWillBeCaught(Fish* fish);
+	void checkOutCollisionBetweenFishesAndFishingNet(Bullet* bulet);
 };
 
